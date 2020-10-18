@@ -19,7 +19,9 @@ class _SignInState extends State<SignIn> {
         brightness: Brightness.light,
       ),
       body: Form(
+        key: _formKey,
         child: Container(
+          margin : EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             children: [
               Spacer(),
@@ -41,6 +43,30 @@ class _SignInState extends State<SignIn> {
                 onChanged: (val) {
                   email = val;
                 },
+              ),
+              SizedBox(height: 24,),
+              Container(
+                padding: EdgeInsets.symmetric(vertical: 18),
+                decoration: BoxDecoration(
+                  color:Colors.blue,
+                  borderRadius: BorderRadius.circular(30)
+                ),
+                alignment: Alignment.center,
+                width: MediaQuery.of(context).size.width=48,
+                child: Text("Sign in", style: TextStyle(color:Colors.white, fontSize: 16),),
+              ),
+              SizedBox(height: 18,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Don't have an account? ", style: TextStyle(fontSize: 15.5),),
+                  GestureDetector(
+                    onTap: () {
+                        Navigator.pushReplacement(context,
+                            MaterialPageRoute(builder: (context) => SignIn()));
+                      },
+                    child: Text("Sign Up", style: TextStyle(fontSize: 15.5), decoration:TextDecoration.underline,)),
+                ],
               ),
               SizedBox(height: 80,),
             ],

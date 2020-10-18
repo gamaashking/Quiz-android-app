@@ -1,76 +1,99 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:miniproject/services/auth.dart';
 import 'package:miniproject/widgets/widgets.dart';
 
 class SignIn extends StatefulWidget {
+  final Function toogleView;
+
+  SignIn({this.toogleView});
+
   @override
   _SignInState createState() => _SignInState();
 }
 
 class _SignInState extends State<SignIn> {
-  final _formKey = GlobalKey<FormState>();
-  String email, password;
+
+  final AuthService _authService = AuthService();
+
+  TextEditingController emailEditingController = new TextEditingController();
+  TextEditingController passwordEditingController = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(
+        SystemUiOverlayStyle(statusBarColor: Colors.white));
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: appBar(context),
-        backgroundColor: Colors.transparent,
-        elevation: 0.0,
+        title: AppLogo(),
         brightness: Brightness.light,
+        elevation: 0.0,
+        backgroundColor: Colors.transparent,
+        //brightness: Brightness.li,
       ),
-      body: Form(
-        key: _formKey,
-        child: Container(
-          margin : EdgeInsets.symmetric(horizontal: 24),
-          child: Column(
-            children: [
-              Spacer(),
-              TextFormField(
-                validator: (val) {
-                  return val.isEmpty ? "Enter Emailid" : null;
-                },
-                decoration: InputDecoration(hintText: "Email"),
-                onChanged: (val) {
-                  email = val;
-                },
-              ),
-              SizedBox(height: 6,),
-              TextFormField(
-                validator: (val) {
-                  return val.isEmpty ? "Enter Password" : null;
-                },
-                decoration: InputDecoration(hintText: "Password"),
-                onChanged: (val) {
-                  email = val;
-                },
-              ),
-              SizedBox(height: 24,),
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 18),
-                decoration: BoxDecoration(
-                  color:Colors.blue,
-                  borderRadius: BorderRadius.circular(30)
-                ),
-                alignment: Alignment.center,
-                width: MediaQuery.of(context).size.width=48,
-                child: Text("Sign in", style: TextStyle(color:Colors.white, fontSize: 16),),
-              ),
-              SizedBox(height: 18,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+      body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 24),
+        child: Column(
+          children: [
+            Spacer(),
+            Container(
+              child: Column(
                 children: [
-                  Text("Don't have an account? ", style: TextStyle(fontSize: 15.5),),
-                  GestureDetector(
-                    onTap: () {
-                        Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) => SignIn()));
-                      },
-                    child: Text("Sign Up", style: TextStyle(fontSize: 15.5), decoration:TextDecoration.underline,)),
+                  TextField(
+                    decoration: InputDecoration(hintText: "Email"),
+                  ),
+                  SizedBox(
+                    height: 6,
+                  ),
+                  TextField(
+                    decoration: InputDecoration(hintText: "Password"),
+                  ),
+                  SizedBox(
+                    height: 24,
+                  ),
+                  Container(
+                    alignment: Alignment.center,
+                    width: MediaQuery.of(context).size.width,
+                    padding: EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                    decoration: BoxDecoration(
+                        color: Colors.blue,
+                        borderRadius: BorderRadius.circular(30)),
+                    child: Text(
+                      "Sign In",
+                      style: TextStyle(fontSize: 16, color: Colors.white),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Don\'t have an account? ',
+                          style:
+                              TextStyle(color: Colors.black87, fontSize: 17)),
+                      GestureDetector(
+                        onTap: () {
+                          widget.toogleView();
+                        },
+                        child: Container(
+                          child: Text('Sign Up',
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  decoration: TextDecoration.underline,
+                                  fontSize: 17)),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
-              SizedBox(height: 80,),
-            ],
-          ),
+            ),
+            SizedBox(
+              height: 80,
+            )
+          ],
         ),
       ),
     );

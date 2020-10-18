@@ -5,6 +5,7 @@ import 'package:miniproject/services/auth.dart';
 import 'package:miniproject/services/database.dart';
 import 'package:miniproject/widgets/widgets.dart';
 
+
 class SignUp extends StatefulWidget {
   final Function toogleView;
 

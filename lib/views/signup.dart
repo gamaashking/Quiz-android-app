@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:miniproject/helper/constants.dart';
-import 'package:miniproject/services/auth.dart';
-import 'package:miniproject/services/database.dart';
-import 'package:miniproject/widgets/widgets.dart';
-
+import 'package:quizapp2/helper/constants.dart';
+import 'package:quizapp2/services/auth.dart';
+import 'package:quizapp2/services/database.dart';
+import 'package:quizapp2/views/home.dart';
+import 'package:quizapp2/widget/widget.dart';
 
 class SignUp extends StatefulWidget {
   final Function toogleView;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:miniproject/services/auth.dart';
-import 'package:miniproject/widgets/widgets.dart';
+import 'package:quizapp2/services/auth.dart';
+import 'package:quizapp2/widget/widget.dart';
 
 class SignIn extends StatefulWidget {
   final Function toogleView;

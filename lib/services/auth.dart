@@ -1,5 +1,5 @@
-import 'package:./firebase_auth/firebase_auth.dart';
-import 'package:miniproject/models/user.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:quizapp2/models/user.dart';
 
 class AuthService{
 
